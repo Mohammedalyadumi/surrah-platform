@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { Plus, Search, Pencil, Trash2, CalendarDays, X, MapPin, Clock } from 'lucide-react'
+import { Plus, Search, Pencil, Trash2, CalendarDays, X, MapPin, Clock, Eye } from 'lucide-react'
 
 const EMPTY_FORM = {
   title: '', description: '', date: '', time: '', location: '',
@@ -26,6 +27,7 @@ const statusBadge = (status) => {
 }
 
 export default function Events() {
+  const navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
@@ -204,6 +206,9 @@ export default function Events() {
                       <td>{statusBadge(ev.status)}</td>
                       <td>
                         <div style={{ display: 'flex', gap: '6px' }}>
+                          <button className="btn-icon" onClick={() => navigate(`/events/${ev.id}`)} title="عرض التفاصيل">
+                            <Eye size={14} />
+                          </button>
                           <button className="btn-icon" onClick={() => openEdit(ev)} title="تعديل">
                             <Pencil size={14} />
                           </button>

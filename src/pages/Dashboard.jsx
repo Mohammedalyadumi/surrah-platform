@@ -74,7 +74,7 @@ export default function Dashboard() {
       setMonthlyData(countsByMonth.map((count, i) => ({
         month: months[(now.getMonth() - 5 + i + 12) % 12],
         فعاليات: count,
-        أعضاء: Math.floor(Math.random() * 10) + 2,
+        أعضاء: Math.floor(Math.random() * 15) + 3,
       })))
     } catch (err) {
       console.error(err)

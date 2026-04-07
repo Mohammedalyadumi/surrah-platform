@@ -24,7 +24,7 @@ export default function Login() {
       if (tab === 'login') {
         const { error } = await signIn(email, password)
         if (error) throw error
-        navigate('/')
+        navigate('/dashboard')
       } else {
         const { error } = await signUp(email, password)
         if (error) throw error
